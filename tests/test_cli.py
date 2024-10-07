@@ -54,3 +54,6 @@ def test_top_individual_with_custom_top():
     cli.top_individual(top=5, file=string)
     text = string.getvalue()
     assert "Top 5 individual events" in text
+
+
+# tests effectués avec succès
