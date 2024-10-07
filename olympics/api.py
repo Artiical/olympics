@@ -9,6 +9,7 @@ app = FastAPI()
 
 # Simple API entry points
 
+
 @app.get("/countries/")
 def countries(id: int | None = None):
     """List of all countries.
@@ -77,6 +78,7 @@ def discipline_athletes(discipline_id: int):
 
 # Complex API entry points
 
+
 @app.get("/top-countries/")
 def top_countries(top: int | None = 10):
     """Medal count ranking of countries.
@@ -129,4 +131,4 @@ def top_individual(top: int | None = 10):
     Number of athletes is limited to the given top number.
 
     """
-    return db.get_top_collective(top)
+    return db.get_top_individual(top)  # correction du bug
