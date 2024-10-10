@@ -1,7 +1,6 @@
 from io import StringIO
 
 from olympics import cli
-from click.testing import CliRunner
 
 
 def test_top_countries():
@@ -57,9 +56,10 @@ def test_top_individual_with_custom_top():
     assert "Top 5 individual events" in text
 
 
-def test_search_countries_cli():
-    runner = CliRunner()
-    result = runner.invoke(cli.search_countries, ["uga"])
-    assert result.exit_code == 0
-    assert "Uganda" in result.output
-    assert "Portugal" in result.output
+# test recherche de pays
+def test_search_countries():
+    string = StringIO()
+    cli.search_countries("uga", file=string)
+    text = string.getvalue()
+    assert "Uganda" in text
+    assert "Portugal" in text

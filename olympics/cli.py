@@ -3,7 +3,7 @@
 from rich.console import Console
 from rich.table import Table
 
-from . import db
+from . import db, api
 
 
 def top_countries(top=10, file=None):
@@ -59,6 +59,19 @@ def top_individual(top=10, file=None):
             row["country"],
             str(row["medals"]),
         )
+
+    console = Console(file=file)
+    console.print(table)
+
+
+# Recherche de pays
+def search_countries(name, file=None):
+    table = Table(title=f"Countries matching '{name}'")
+
+    table.add_column("Country")
+
+    for row in db.search_countries(name):
+        table.add_row(row["name"])
 
     console = Console(file=file)
     console.print(table)
