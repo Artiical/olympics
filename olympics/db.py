@@ -347,3 +347,19 @@ def get_top_individual(top=10):
     ).fetchall()
     cursor.close()
     return rows
+
+
+# Recherche de pays par nom
+
+
+def search_countries(query):
+    with get_connection() as conn:
+        cursor = conn.cursor()
+        rows = cursor.execute(
+            """
+            SELECT * FROM country
+            WHERE name LIKE ?
+        """,
+            (f"%{query}%",),
+        ).fetchall()
+    return rows
