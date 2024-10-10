@@ -1,6 +1,7 @@
 from fastapi.testclient import TestClient
 
 from olympics import api
+import pytest
 
 
 client = TestClient(api.app)
@@ -124,3 +125,15 @@ def test_individual_medals_id():
     response = client.get("/individual-medals/?athlete_id=1")
     assert response.status_code == 200
     assert len(response.json()) > 0
+
+
+# test de recherche de pays
+def test_search_countries_api():
+    results = api.search_countries("uga")
+    assert len(results) > 0, "Un résultat attendu"
+    assert any(
+        "Uganda" in country["name"] for country in results
+    ), "Uganda attendu dans les résultats"
+    assert any(
+        "Portugal" in country["name"] for country in results
+    ), "Portugal attendu dans les résultats"
