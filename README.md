@@ -34,7 +34,6 @@ Les devoirs dont le contenu est trop proche, dont l’historique Git est douteux
 ou dont le code est si stupide qu’il ne peut pas avoir été écrit par un humain,
 seront sanctionnés d’un D ou d’un E.
 
-
 ## Comment l’installer
 
 1. Forkez le dépôt.
@@ -68,7 +67,6 @@ seront sanctionnés d’un D ou d’un E.
 8. Installez les dépendances du projet.
 
    `pip install -e .`
-
 
 ## Comment l’utiliser
 
@@ -155,7 +153,6 @@ Pour quitter l’interpréteur, utilisez `exit()`.
 Quelques tests basiques sont disponibles dans le dossier `tests`.
 
 Pour lancer les tests, lancez `python -m pytest`
-
 
 ## Sujet
 
@@ -250,7 +247,7 @@ lève une exception, on peut considérer cela comme un bug.
 ### Ajoutez une fonction en TDD (optionnel)
 
 Ajoutez une fonction en suivant la méthode TDD. Vous pouvez créer un système de
-recherche de pays par leur nom : rechercher « ugu » trouvera par exemple
+recherche de pays par leur nom : rechercher « uga » trouvera par exemple
 « Portugal » et « Uganda ».
 
 À chaque fois, écrivez un test qui ne passe pas, commitez-le, puis ajoutez le
@@ -273,8 +270,29 @@ Mettez en place un outil de vérification de la qualité du code : installez,
 configurez et utilisez `ruff`. Mettez en place dans votre dépôt Git des
 méthodes pour s’assurer que le code suit toujours ces bonnes pratiques.
 
-
 ## Réponses et remarques
 
 Si vous avez des réponses à écrire, des remarques à faire sur votre travail,
 ajoutez-les à la fin de ce fichier.
+
+7/ Le paramètre "file" permet de choisir ou on peut envoyer les données entrantes qui sont de base affichées dans la console
+et grâce à file on peut les envoyer ailleurs comme dans un fichier par exemple.
+Cette technique s'appelle la redirection des flux.
+
+8/ " # pragma: no cover " est utilisé pour indiquer à la couverture d'ignorer certaines lignes de code qui ne seront pas prise en compte.
+
+9/ Même s'il y a une couverture des test à 100%, cela ne garantit pas que l'ensemble du code fonctionne parfaitement car
+la couverture de test ne mesure pas la qualité des tests elle execute des lignes de code sans vérifier leur comportement.
+De plus, elle ne prends pas en compte les interaction possible entre celles ci.
+Il existe des tests que nous pouvons réaliser permettant de vérifier si chaque fonction fonctionne correctement, d'intégration pour verifier les différentes parties du système, de bout en bout pour simuler des scénarios et vérifier que le système fonctionne du début jusqu'à la fin, performance pour évaluer les performance du système, de sécurité, de compatibilité et enfin de régréssion.
+
+10/ Ecrire les tests dans cet ordre là permet d'attraper les bugs et de résoudre les problèmes progressivement.
+De plus, les combiner avec les tests dans un seul commit commun garantit que chaque code a été testé et effectué de manière efficace on
+peut dire que ça rend le code "plus fiable".
+
+## Remarques
+
+Ayant push avant j'ai peur que mon travail soit pris sur github.
+Je m'excuse de ne pas avoir fait des commits commun dans les tests de non regressions et dans l'ordre ,
+j'ai essayé d'aller un peu plus loin dans certains tests même si ça semble peu.
+j'ai essayé d'implémenter le système de recherche mais je n'ai pas reussi à le faire sur le main.py mais j'ai essayé de faire le reste et je l'ai couvert à 100%
