@@ -1,4 +1,5 @@
 from olympics import db
+import pytest
 
 
 def test_athletes():
@@ -165,3 +166,15 @@ def test_get_individual_medals_no_id():
 def test_get_top_individual_no_top():
     rows = db.get_top_individual()
     assert len(rows) == 10
+
+
+def test_search_countries():
+    # Test de recherche de pays par nom
+    results = db.search_countries("uga")
+    assert len(results) > 0, "Un resultat attendu"
+    assert any(
+        "Uganda" in country["name"] for country in results
+    ), "Uganda attendu dans les resultats"
+    assert any(
+        "Portugal" in country["name"] for country in results
+    ), "Portugal attendu dans les resultats"
