@@ -132,3 +132,8 @@ def top_individual(top: int | None = 10):
 
     """
     return db.get_top_individual(top)  # correction du bug
+
+
+# recherche de pays
+def search_countries(query):
+    return db.search_countries(query)
